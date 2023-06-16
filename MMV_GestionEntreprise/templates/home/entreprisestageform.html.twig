@@ -1,0 +1,45 @@
+{% include 'header.html.twig' %}
+
+<div class="formulaire-entreprisestage">
+    <h1>Formulaire d'attribution d'un stage à une entreprise</h1>
+    {{form(entreprisestageform)}}
+</div>
+
+<style>
+
+.formulaire-entreprisestage {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.formulaire-entreprisestage h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.formulaire-entreprisestage input[type="text"],
+.formulaire-entreprisestage select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.formulaire-entreprisestage input[type="submit"] {
+    background-color: #1abc9c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.formulaire-entreprisestage input[type="submit"]:hover {
+    background-color: #16a085;
+}
+
+</style>
+

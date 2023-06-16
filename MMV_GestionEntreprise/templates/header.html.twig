@@ -1,0 +1,130 @@
+<header>
+	<nav>
+		<ul class="nav-list">
+			<img class="logo" src='https://www.la-chataigneraie.org/wp-content/uploads/2022/02/campus-logo-1.png' height="120"/>
+			<li class="nav-item">
+				<a href="{{ path('app_home') }}">ACCUEIL</a>
+			</li>
+			<li class="nav-item">
+				<a href="{{ path('app_search') }}">RECHERCHE</a>
+			</li>
+			{% if is_granted('ROLE_SUPER_ADMIN') %}
+				<li class="nav-item">
+					<a href="{{ path('listeUtilisateur') }}">UTILISATEUR</a>
+				</li>
+			{% endif %}
+			<li class="nav-item">
+				{% if app.user %}
+					<a href="{{ path('app_login') }}">SE DÉCONNECTER</a>
+				{% endif %}
+			</li>
+			<div class="logo-user-container">
+				<img class="logo-user" src='https://cdn-icons-png.flaticon.com/512/996/996484.png'/>
+				{% if app.user %}
+					<div class="user-info">
+						{% if is_granted('ROLE_SUPER_ADMIN') %}
+							{{ app.user.username }}
+							| Admin
+						{% elseif is_granted('ROLE_USER') %}
+							{{ app.user.username }}
+							| Enseignant
+						{% endif %}
+					</div>
+				{% endif %}
+			</div>
+		</ul>
+	</nav>
+</header>
+
+<style>
+	/* Styles pour la liste de navigation */
+	.nav-list {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		background-color: white;
+		overflow: hidden; /* Ajout de la propriété overflow pour cacher le contenu qui dépasse */
+	}
+
+	.logo-user-container {
+		display: flex;
+		align-items: center;
+		margin-right: 20px;
+	}
+
+	.logo-user {
+		width: 90px;
+		height: 90px;
+	}
+
+	.user-info {
+		display: flex;
+		align-items: center;
+		margin-left: 10px;
+		background-color: #36363B;
+		color: white;
+		padding: 5px 10px;
+		font-weight: bold;
+		font-size: 14px;
+		border-radius: 5px;
+
+	}
+
+	{% if is_granted('ROLE_USER_TEST') %}
+		.user-info {
+			display: flex;
+			align-items: center;
+			margin-left: 10px;
+			background-color: #36363B;
+			color: white;
+			padding: 5px 10px;
+			font-weight: bold;
+			font-size: 14px;
+			border-radius: 5px;
+		}
+	{% endif %}
+
+	.nav-item {
+		margin-right: 20px;
+	}
+
+	html,
+	body {
+		height: 100%;
+	}
+
+	body {
+		font-family: 'Poppins', sans-serif;
+		margin: 0;
+		height: 100%;
+		background-color: #F7F7F7;
+		font-weight: 100;
+	}
+
+	/* Styles pour les liens de navigation */
+	.nav-item a {
+		color: #333;
+		text-decoration: none;
+		font-weight: bold;
+		transition: color 0.3s ease;
+	}
+
+	.nav-item a:hover {
+		background-color: #36363B;
+		color: white;
+		padding: 10px;
+		z-index: -1;
+		transition: all 0.3s;
+		transform: translate(-50%, -50%);
+	}
+
+	.logo {
+		display: inline-block;
+		margin-bottom: 0;
+		margin-left: 0;
+	}
+</style>
+

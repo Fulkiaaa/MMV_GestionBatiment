@@ -1,0 +1,44 @@
+{% include 'header.html.twig' %}
+
+<div class="form-modif-entreprise">
+<h1>Formulaire de modification de l'entreprise {{nom}}</h1>
+{{form(updateentrepriseform)}}
+</div>
+
+<style>
+.form-modif-entreprise {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.form-modif-entreprise h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-modif-entreprise input[type="text"],
+.form-modif-entreprise textarea,
+.form-modif-entreprise input[type="number"],
+.form-modif-entreprise select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.form-modif-entreprise input[type="submit"] {
+    background-color: #1abc9c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.form-modif-entreprise input[type="submit"]:hover {
+    background-color: #16a085;
+}
+</style>

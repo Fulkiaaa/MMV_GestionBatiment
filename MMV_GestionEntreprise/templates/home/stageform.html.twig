@@ -1,0 +1,47 @@
+{% include 'header.html.twig' %}
+
+<div class="formulaire-stage">
+    <h1>Formulaire d'ajout d'un stage</h1>
+    {{form(stageform)}}
+</div>
+<style>
+
+.formulaire-stage {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.formulaire-stage h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.formulaire-stage input[type="text"],
+.formulaire-stage input[type="number"],
+.formulaire-stage select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.formulaire-stage input[type="submit"] {
+    background-color: #1abc9c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.formulaire-stage input[type="submit"]:hover {
+    background-color: #16a085;
+}
+
+</style>
+
+
+

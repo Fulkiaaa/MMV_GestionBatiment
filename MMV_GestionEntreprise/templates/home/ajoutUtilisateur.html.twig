@@ -1,0 +1,47 @@
+{% include 'header.html.twig' %}
+
+<div class="formulaire-utlisateur">
+    <h1>Formulaire d'ajout d'un utilisateur</h1>
+    {{ form(ajoutUtilisateurForm) }}
+</div>
+
+
+<style>
+.formulaire-utlisateur {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.formulaire-utlisateur h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.formulaire-utlisateur input[type="text"],
+.formulaire-utlisateur input[type="password"],
+.formulaire-utlisateur select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.formulaire-utlisateur input[type="submit"] {
+    background-color: #1abc9c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.formulaire-utlisateur input[type="submit"]:hover {
+    background-color: #16a085;
+}
+
+</style>
+
+

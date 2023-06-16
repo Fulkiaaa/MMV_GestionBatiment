@@ -1,0 +1,267 @@
+{% include 'header.html.twig' %}
+
+<div class="titre-all">
+	<h1>Information sur l'employé
+		{{ employe.nom }}
+		{{	employe.prenom}}</h1>
+</div>
+
+<div class="container-all">
+	<table>
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Fonction</th>
+				<th>Entreprise</th>
+				<th>Mail</th>
+				<th>Téléphone</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					{{ employe.nom }}</td>
+				<td>
+					{{ employe.prenom }}
+				</td>
+				<td>
+					{{ employe.fonction }}
+				</td>
+				{# attribute permet d'accéder à la propriété 'nom' de employe.entreprise (donc le nom de l'entreprise).
+				Si 'nom' est nul (pck l'entreprise n'existe pas, ou a était supprimer précédemment), attribute va renvoyer simplement 'null'. 
+				Ce qui, auparavant, renverrais une erreur, et on ne veut pas de ça le jour de l'examen :'(
+				On complète ensuite avec un 'filtre' (c comme ca que la doc l'appelle) qui remplace 'null' par le messaqe que l'on souhaite (pour résumer grossièrement).
+				Ce qui fait que l'on obtient 'non renseigné' si aucune entreprise n'est affilié à l'employer. Et si une entreprise est affilié, on obtient son nom.
+				) #}
+				<td>{{ attribute(employe.entreprise, 'nom')|default('Non renseigné') }}</td>
+				<td>
+					{{ employe.mail }}
+				</td>
+				<td>
+					{{ employe.tel }}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+{% if is_granted('ROLE_SUPER_ADMIN') %}
+
+	<div class="ajoutContainer">
+		<div class="ajoutTitre">
+			<h1>Modification / Suppression des données</h1>
+		</div>
+		<div class="ajoutBtn">
+			<a href="{{ path('ModifEmploye', {'id' : id}) }}">
+				<button type="submit">
+					<span>Modifier l'employé</span>
+					<i></i>
+				</button>
+			</a>
+			<a href="{{ path('SupprimeEmploye', {'id' : id}) }}">
+				<button type="submit">
+					<span>Supprimer l'employé</span>
+					<i></i>
+				</button>
+			</a>
+		</div>
+	</div>
+{% endif %}
+
+
+<style>
+/* Style pour la section Titre all */
+.titre-all {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.titre-all h1 {
+	font-size: 36px;
+	color: #333;
+}
+
+/* Style commun */
+.container-all {
+	margin: 20px auto;
+	width: 90%;
+}
+
+th,
+td {
+	border: 1px solid #ddd;
+	padding: 10px;
+	text-align: center;
+}
+
+/* Style pour la section Container all */
+.container-all table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 14px;
+}
+
+.container-all th {
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.container-all td {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+.container-all td a {
+	color: #333;
+	text-decoration: none;
+}
+
+.container-all td a:hover {
+	text-decoration: underline;
+}
+
+.container-all tbody tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+.container-all tbody tr:hover {
+	background-color: #e8f0fe;
+}
+
+
+/* BOUTON */
+
+button {
+	position: relative;
+	background: white;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 30px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0 0 15px;
+	text-transform: uppercase;
+	border: none;
+	letter-spacing: 0.1rem;
+	font-size: 1rem;
+	padding: 1rem 3rem;
+	transition: 0.2s;
+
+}
+
+button:hover {
+	letter-spacing: 0.2rem;
+	padding: 1.1rem 3.1rem;
+	background: white;
+	color: white;
+	/* box-shadow: 0 0 35px var(--clr); */
+	animation: box 3s infinite;
+}
+
+button::before {
+	content: "";
+	position: absolute;
+	inset: 2px;
+	background: #89898c;
+	border-radius: 30px;
+
+}
+
+button span {
+	position: relative;
+	z-index: 1;
+}
+button i {
+	position: absolute;
+	inset: 0;
+	display: block;
+}
+
+button i::before {
+	content: "";
+	position: absolute;
+	width: 10px;
+	height: 2px;
+	left: 80%;
+	top: -2px;
+	border: 2px solid #fff;
+	background: #fff;
+	transition: 0.2s;
+}
+
+button:hover i::before {
+	width: 15px;
+	left: 20%;
+	animation: move 3s infinite;
+}
+
+button i::after {
+	content: "";
+	position: absolute;
+	width: 10px;
+	height: 2px;
+	left: 20%;
+	bottom: -2px;
+	border: 2px solid #fff;
+	background: #fff;
+	transition: 0.2s;
+}
+
+button:hover i::after {
+	width: 15px;
+	left: 80%;
+	animation: move 3s infinite;
+}
+
+@keyframes move {
+	0% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(5px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes box {
+	0% {
+		box-shadow: #fff;
+	}
+	50% {
+		box-shadow: 0 0 25px #fff;
+	}
+	100% {
+		box-shadow: red;
+	}
+}
+
+{% if is_granted('ROLE_SUPER_ADMIN') %}
+
+	.ajoutContainer {
+		margin-left: 30px;
+		background-color: rgba(255, 255, 255, 0.2);
+	}
+
+	.ajoutContainer h1 {
+		color: #333333;
+		text-align: center;
+	}
+
+	.ajoutContainer button {
+		margin: 10px;
+		width: 300px;
+	}
+
+	.ajoutBtn {
+		text-align: center;
+	}
+
+{% endif %}
+</style>

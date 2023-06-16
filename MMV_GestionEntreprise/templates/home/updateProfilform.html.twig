@@ -1,0 +1,44 @@
+{% include 'header.html.twig' %}
+
+<div class="form-modif-profil">
+<h1>Formulaire de modification des profils</h1>
+{{form(updateprofilform)}}
+</div>
+
+<style>
+.form-modif-profil {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.form-modif-profil h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-modif-profil input[type="text"],
+.form-modif-profil textarea,
+.form-modif-profil input[type="number"],
+.form-modif-profil select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.form-modif-profil input[type="submit"] {
+    background-color: #1abc9c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.form-modif-profil input[type="submit"]:hover {
+    background-color: #16a085;
+}
+</style>

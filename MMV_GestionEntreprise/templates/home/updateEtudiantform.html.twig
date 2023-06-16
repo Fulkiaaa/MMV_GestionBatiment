@@ -1,0 +1,44 @@
+{% include 'header.html.twig' %}
+
+<div class="form-modif-etudiant">
+<h1>Formulaire de modification des informations d'un étudiant</h1>
+{{form(updateetudiantform)}}
+</div>
+
+<style>
+.form-modif-etudiant {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+.form-modif-etudiant h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-modif-etudiant input[type="text"],
+.form-modif-etudiant textarea,
+.form-modif-etudiant input[type="number"],
+.form-modif-etudiant select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.form-modif-etudiant input[type="submit"] {
+    background-color: #1abc9c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.form-modif-etudiant input[type="submit"]:hover {
+    background-color: #16a085;
+}
+</style>
